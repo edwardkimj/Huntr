@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A5s-vG-lba">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--View Controller2-->
+        <scene sceneID="n7b-tV-eo6">
+            <objects>
+                <viewController id="A5s-vG-lba" customClass="ViewController2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="385-qZ-DqQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ksq-xK-pzV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fwp-Tx-uRT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HUNTR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zh0-Ye-JL7">
+                                <rect key="frame" x="271" y="134" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQp-61-QwE">
+                                <rect key="frame" x="275" y="226" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHf-yT-gLa">
+                                <rect key="frame" x="281" y="305" width="34" height="30"/>
+                                <state key="normal" title="Hunt"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="modal" id="W2p-q7-twG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KQp-61-QwE" firstAttribute="leading" secondItem="fwp-Tx-uRT" secondAttribute="leading" constant="275" id="6NP-b3-axw"/>
+                            <constraint firstItem="KQp-61-QwE" firstAttribute="centerX" secondItem="MHf-yT-gLa" secondAttribute="centerX" id="I5U-ZQ-oid"/>
+                            <constraint firstItem="Zh0-Ye-JL7" firstAttribute="centerX" secondItem="fwp-Tx-uRT" secondAttribute="centerX" id="Jgc-IC-8cZ"/>
+                            <constraint firstItem="Zh0-Ye-JL7" firstAttribute="top" secondItem="385-qZ-DqQ" secondAttribute="bottom" constant="114" id="OYj-J7-jLQ"/>
+                            <constraint firstItem="KQp-61-QwE" firstAttribute="top" secondItem="Zh0-Ye-JL7" secondAttribute="bottom" constant="71" id="jNB-XC-uzs"/>
+                            <constraint firstItem="MHf-yT-gLa" firstAttribute="top" secondItem="KQp-61-QwE" secondAttribute="bottom" constant="58" id="t3f-gy-BPW"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gameButton" destination="MHf-yT-gLa" id="VEe-v9-pjc"/>
+                        <outlet property="gameLabel" destination="KQp-61-QwE" id="8sd-bX-1Ha"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCB-OK-YdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447" y="362"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
