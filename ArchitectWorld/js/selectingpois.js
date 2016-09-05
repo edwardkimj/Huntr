@@ -28,7 +28,7 @@ var World = {
         var markers = [];
         var that = this;
 
-		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length ; currentPlaceNr++) {
+		for (var currentPlaceNr = 1; currentPlaceNr < poiData.length ; currentPlaceNr++) {
 			var singlePoi = {
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
