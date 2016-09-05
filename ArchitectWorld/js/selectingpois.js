@@ -39,10 +39,6 @@ var World = {
                 onClose: function() {
                     if (markers.length === 0) {
                         alert('Congratz!');
-                        World.sock = new AR.ImageResource("assets/dirtysock1.png");
-                        console.log(World.sock);
-                        return World.sock;
-
                     }
                     var currentMarker = markers.shift();
                     World.markerList = [currentMarker];
