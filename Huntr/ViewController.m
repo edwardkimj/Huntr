@@ -52,7 +52,7 @@
         self.architectView.debugDelegate = self;
         
         /* Use the -setLicenseKey method to unlock all Wikitude SDK features that you bought with your license. */
-        [self.architectView setLicenseKey:@"FOCM/CM6FRmJfcYrnxOiCZbmMUULtn8n7xENkjahAUGEIObUoEjkoG3g+XEZTz8kMCAOGksYcHYhsPL/BW5aRyO+EZ0Z4wy8iyGyb+YtcoxIX2Mi3XJ+SNziugsJ1I/2rqLnl0z3tYtMXWWdRtEx4fDWZsUYvjDsu2jvfFNJevBTYWx0ZWRfX9IkQb25b6ifmFam2FsBWtb0PJt3gdbKltVb5TZqRoOom8KR/tKvZYKqd1zZ/WJmYwJmJ93Yse95mptEuKNFsskn2DT8muARsnYX5FtE+EKnDBGlSL5osujpXdXSSNTZ2EE6+fOQNuYmUodPDnusDaDBc6wLypQmrgRZcULE2Gw8e5jSlDCg4RgwUtMR362HUL2VBuzA4AbK/j063Y6QdL4cfSEoj0QmzpmVZn9x3k6WdxwSdWfAMK1I65MFiIybDM7/ao3v8SqTa/5J9MUcHbyYvPX7NDM+xMLxv4BfDTni/qGJGEDECwwtc2g3K70rIQd7Uq71xh59olSZCcMnCDmjiBeBh4Pep/rIiaufAqYndi64/xE+7vntYSMSPNZK9fLbOIY/uY1yYsd6TDg2KxJqcFb/sQOX1bUHeiaJt+ByJx+jSVznNdLcIBjmvGo7yZPPPjdcl28R3MHlC2kmLB0K/XFrBxDsvvOj67u92eIllsddIGRU6BA="];
+        [self.architectView setLicenseKey:@"INSERT YOUR LICENSE KEY HERE"];
         
         /* The Architect World can be loaded independently from the WTArchitectView rendering.
          
@@ -87,6 +87,7 @@
         
         /* Standard subview handling using Autolayout */
         [self.view addSubview:self.architectView];
+        [self.view sendSubviewToBack:self.architectView]; //placing view on top of architect. view has a stacked view, it is 2 views on top of each other. this allows you to layer buttons on top of AR view
         self.architectView.translatesAutoresizingMaskIntoConstraints = NO;
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_architectView);
