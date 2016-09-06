@@ -1,5 +1,5 @@
 //
-//  ViewController2.h
+//  InitialClueViewController.h
 //  Huntr
 //
 //  Created by Millie Chan on 9/5/16.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController2 : UIViewController
+@interface InitialClueViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *gameButton;
+- (IBAction)startHuntPressed:(UIButton *)sender;
+
 @end

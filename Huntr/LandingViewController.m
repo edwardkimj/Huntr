@@ -1,24 +1,24 @@
 //
-//  ViewController2.m
+//  LandingViewController.m
 //  Huntr
 //
 //  Created by Millie Chan on 9/5/16.
 //  Copyright © 2016 Edward Kim. All rights reserved.
 //
 
-#import "ViewController2.h"
+#import "LandingViewController.h"
 
-@interface ViewController2 ()
+@interface LandingViewController ()
 
 @end
 
-@implementation ViewController2
+@implementation LandingViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"Made it here!!");
     NSError *error;
     NSString *url_string = [NSString stringWithFormat: @"https://protected-anchorage-46542.herokuapp.com/users/2/games"];
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:url_string]];

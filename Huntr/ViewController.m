@@ -52,7 +52,7 @@
         self.architectView.debugDelegate = self;
         
         /* Use the -setLicenseKey method to unlock all Wikitude SDK features that you bought with your license. */
-        [self.architectView setLicenseKey:@"INSERT YOUR LICENSE KEY HERE"];
+        [self.architectView setLicenseKey:@"19uCNbFoiM6I7NYWyNLWRu41m+dItGGXA1HJMeo3nNbKwsfdaANr48tMc9NUzKoAXSZbveF/2YLDOewNDrd8ojptnblJVvt3UPqJmvAaR4+dP0WBxvh+dJJ/b31mDpdYtfpPqsU+ChCzc9DaMeNgRd6eRqQ88ViTTB8JwWJUY1ZTYWx0ZWRfX9jxjWsr4SnahN9P6cU8QWbwBHpmWftq3Xq0MDLDVRuaH2OeeRmE4PEKSmT6WLrXgY97jmamuBNi4l73ZFri8kWLZd96JC2Fd9Y+t4y/RE1j3Iz3TJRiQQgRuVkaoIjnoq/oyYfjclkS9nelP+IegCfO2EHKkY8HCVjeg5UZGElgcFAUY6TBsFRgH7nkBj3lmHJ8XolDR7moO269+MlCL6ChVsSts35FUXO+/rhBBwQvyRn23fdFEKOc+mp9UrwipwAMM//N4osFNsm4m52NR1ge8k4e0RY6GVsayFk+OAQhyIK+qpZZ/jXTfthYFfT/vEV2TnpNM3SiIouItkcpDDlrSwDZCHzGNfrZve7uXnVUZ9Luq5De018Z7KWhq0SkhogcoJbVfhARWfnwdPtKmqxW7oiFs0+GCfzj9gbGRf7QIwA8AhLg3Nbu6iYHEhawi2EqJ43f0Hb5u4tT+8XGpkFIkppXGsziTzM67wLogJD0Qyvw42zPcHc="];
         
         /* The Architect World can be loaded independently from the WTArchitectView rendering.
          
