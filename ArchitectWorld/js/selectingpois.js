@@ -18,18 +18,25 @@ var World = {
 	markerList: [],
 	currentMarker: null,
     
+    createMarker: function createMarkerFn(specificPoi) {
+        World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
+        World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
+        return new Marker(specificPoi);
+    },
+    
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
-		World.markerList = [];
-
+//		World.markerList = [];
+        
+        console.log(poiData);
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
-        var markers = [];
+        var pois = [];
         var that = this;
 
-		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length ; currentPlaceNr++) {
-			var singlePoi = {
+		for (var currentPlaceNr = 1; currentPlaceNr < poiData.length ; currentPlaceNr++) {
+			var poi = {
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
@@ -37,23 +44,18 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
-                    if (markers.length === 0) {
-                        alert('Congratz!');
-                        World.sock = new AR.ImageResource("assets/dirtysock1.png");
-                        console.log(World.sock);
-                        return World.sock;
-
+                    if (pois.length === 0) {
+                        return alert('Congratz!');
                     }
-                    var currentMarker = markers.shift();
-                    World.markerList = [currentMarker];
-                    World.currentMarker = currentMarker;
+                    World.currentMarker = World.createMarker(pois.shift());
+                    World.markerList = [World.currentMarker];
                 }
 			};
+            pois.push(poi);
             
-            markers.push(new Marker(singlePoi));
 		}
-        
-        World.markerList = [markers.shift()];
+        World.currentMarker = World.createMarker(pois.shift());
+        World.markerList = [World.currentMarker];
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
@@ -114,6 +116,15 @@ var World = {
             marker.poiData.onClose();
         });
         
+        function checkIfUserIsClose() {
+            // If distance from a user and a marker is small, then call the "onClose" function
+                // return ...
+            // Otherwise check it again in 5s.
+            setTimeout(function() {
+                checkIfUserIsClose();
+            }, 5000);
+        }();
+        
         var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
         
         $("#poi-detail-distance").html(distanceToUserValue);
@@ -141,8 +152,9 @@ var World = {
         var serverUrl = ServerInformation.POIDATA_SERVER + "?" + ServerInformation.POIDATA_SERVER_ARG_LAT + "=" + lat + "&" + ServerInformation.POIDATA_SERVER_ARG_LON + "=" + lon + "&" + ServerInformation.POIDATA_SERVER_ARG_NR_POIS + "=20";
     
         var jqxhr = $.getJSON(serverUrl, function(data) {
+            World.markerList = data;
             World.loadPoisFromJsonData(data);
-                              console.log(data);
+//            console.log(data);
             World.isRequestingData = false;
         })
     
