@@ -47,6 +47,22 @@ var World = {
                     if (pois.length === 0) {
                         return alert('Congratz!');
                     }
+                    
+                    console.log("outside of checkIfUserIsClose function:");
+                    (function checkIfUserIsClose() {
+                     //            // If distance from a user and a marker is small, then call the "onClose" function
+                     //                // return ...
+                     //            // Otherwise check it again in 5s.
+                     setTimeout(function() {
+                                var currentMarkerLon = World.currentMarker.poiData.longitude;
+                                var currentMarkerLat = World.currentMarker.poiData.latitude;
+                                var myGeoLocation = new AR.GeoLocation(currentMarkerLat, currentMarkerLon);
+                                var distance = myGeoLocation.distanceToUser();
+                                console.log(myGeoLocation);
+                                console.log(distance);
+                                checkIfUserIsClose();
+                                }, 2000);
+                     })();
                     World.currentMarker = World.createMarker(pois.shift());
                     World.markerList = [World.currentMarker];
                 }
@@ -55,6 +71,11 @@ var World = {
             
 		}
         World.currentMarker = World.createMarker(pois.shift());
+//        var myGeoLocation = new AR.GeoLocation(37.784985, -122.398508);
+//        var distance = myGeoLocation.distanceToUser();
+//        
+//        console.log(distance);
+        
         World.markerList = [World.currentMarker];
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
@@ -81,6 +102,7 @@ var World = {
 
 			World.requestDataFromServer(lat, lon);
 			World.initiallyLoadedData = true;
+            
 		}
 	},
 
@@ -115,15 +137,17 @@ var World = {
             World.markerList = [];
             marker.poiData.onClose();
         });
-        
-        function checkIfUserIsClose() {
-            // If distance from a user and a marker is small, then call the "onClose" function
-                // return ...
-            // Otherwise check it again in 5s.
-            setTimeout(function() {
-                checkIfUserIsClose();
-            }, 5000);
-        }();
+//        console.log("outside of checkIfUserIsClose function:");
+//        (function checkIfUserIsClose() {
+////            // If distance from a user and a marker is small, then call the "onClose" function
+////                // return ...
+////            // Otherwise check it again in 5s.
+//         console.log("Wasup");
+//            setTimeout(function() {
+//                       console.log("Hello");
+//                       checkIfUserIsClose();
+//            }, 2000);
+//        })();
         
         var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
         
@@ -154,7 +178,6 @@ var World = {
         var jqxhr = $.getJSON(serverUrl, function(data) {
             World.markerList = data;
             World.loadPoisFromJsonData(data);
-//            console.log(data);
             World.isRequestingData = false;
         })
     
