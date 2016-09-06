@@ -299,7 +299,7 @@
 				TargetAttributes = {
 					B01EA3291D7DF5FA00BD7E8D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = AWA48HD8WS;
+						DevelopmentTeam = ZPTCGB4LF8;
 					};
 					B01EA3421D7DF5FB00BD7E8D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -524,7 +524,7 @@
 				INFOPLIST_FILE = Huntr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = MillieHuntr;
+				PRODUCT_BUNDLE_IDENTIFIER = "sarah-sucha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -544,7 +544,7 @@
 				INFOPLIST_FILE = Huntr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = MillieHuntr;
+				PRODUCT_BUNDLE_IDENTIFIER = "sarah-sucha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
