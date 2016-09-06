@@ -27,7 +27,7 @@ var World = {
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 //		World.markerList = [];
         
-        console.log(poiData);
+//        console.log(poiData);
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
@@ -48,33 +48,48 @@ var World = {
                         return alert('Congratz!');
                     }
                     
+                    
+                    
                     console.log("outside of checkIfUserIsClose function:");
+                    
+                    
                     (function checkIfUserIsClose() {
-                     //            // If distance from a user and a marker is small, then call the "onClose" function
+                     //            // If distance from a user and a marker is small, then load the
                      //                // return ...
                      //            // Otherwise check it again in 5s.
+                     // oNce it closes check distance IF distance is in range then create clue
+                     // this needs to happen right AFTER the close
                      
-                     setTimeout(function() {
-                                var currentMarkerLon = World.currentMarker.poiData.longitude;
-                                var currentMarkerLat = World.currentMarker.poiData.latitude;
-                                var myGeoLocation = new AR.GeoLocation(currentMarkerLat, currentMarkerLon);
+                     
+                        setTimeout(function() {
+                                   var nextMarker = World.createMarker(pois[0]);
+                                   
+                                   
+                                var nextMarkerLon = nextMarker.poiData.longitude;
+                                var nextMarkerLat = nextMarker.poiData.latitude;
+                                var myGeoLocation = new AR.GeoLocation(nextMarkerLat, nextMarkerLon);
                                 var distance = myGeoLocation.distanceToUser();
-                                console.log(myGeoLocation);
                                 console.log(distance);
-                                if(distance < 80) {
-                                console.log("hello world");
+                                
+                                if(distance < 90) {
+                                    console.log("hello world");
+                                    World.currentMarker = World.createMarker(pois.shift());
+                                    World.markerList = [World.currentMarker];
                                 }
+                                
                                 checkIfUserIsClose();
+                                
                                 }, 2000);
                      })();
-                    World.currentMarker = World.createMarker(pois.shift());
-                    World.markerList = [World.currentMarker];
+                    
+//                    World.currentMarker = World.createMarker(pois.shift());
+//                    World.markerList = [World.currentMarker];
                 }
 			};
             pois.push(poi);
             
 		}
-        World.currentMarker = World.createMarker(pois.shift());
+        World.currentMarker = World.createMarker(pois[0]);
 //        var myGeoLocation = new AR.GeoLocation(37.784985, -122.398508);
 //        var distance = myGeoLocation.distanceToUser();
 //        
@@ -129,7 +144,7 @@ var World = {
         
     onMarkerSelected: function onMarkerSelectedFn(marker) {
         World.currentMarker = marker;
-        console.log(marker);
+//        console.log(marker);
 
         $("#poi-detail-title").html(marker.poiData.title);
         $("#poi-detail-description").html(marker.poiData.description);
