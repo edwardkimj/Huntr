@@ -44,10 +44,9 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
-                    console.log(markers);
                     if (markers.length === 0) {
                         alert('Congratz!');
-                    }
+                    } else if(markers.length >= 1) {
                     
                     World.createMarker(markers[0]);
                     var currentMarker = markers.shift();
@@ -55,19 +54,15 @@ var World = {
 //                    World.markerList = [currentMarker];
                     World.currentMarker = currentMarker;
 //                    World.markerList = [];
-                   
+                    }
                     
                 }
 			};
-            console.log(singlePoi);
             markers.push(singlePoi);
-            console.log(markers)
             World.createMarker(markers[0]);
-            console.log(markers)
 		}
         
         World.markerList = [markers.shift()];
-        console.log(markers);
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
