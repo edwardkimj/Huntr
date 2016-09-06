@@ -21,7 +21,7 @@ var World = {
     createMarker: function createMarkerFn(specificPoi) {
         World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
         World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
-        new Marker(specificPoi);
+        return new Marker(specificPoi);
     },
     
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
@@ -32,11 +32,11 @@ var World = {
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
-        var markers = [];
+        var pois = [];
         var that = this;
 
 		for (var currentPlaceNr = 1; currentPlaceNr < poiData.length ; currentPlaceNr++) {
-			var singlePoi = {
+			var poi = {
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
 				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
@@ -44,25 +44,18 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
-                    if (markers.length === 0) {
-                        alert('Congratz!');
-                    } else if(markers.length >= 1) {
-                    
-                    World.createMarker(markers[0]);
-                    var currentMarker = markers.shift();
-                    
-//                    World.markerList = [currentMarker];
-                    World.currentMarker = currentMarker;
-//                    World.markerList = [];
+                    if (pois.length === 0) {
+                        return alert('Congratz!');
                     }
-                    
+                    World.currentMarker = World.createMarker(pois.shift());
+                    World.markerList = [World.currentMarker];
                 }
 			};
-            markers.push(singlePoi);
-            World.createMarker(markers[0]);
+            pois.push(poi);
+            
 		}
-        
-        World.markerList = [markers.shift()];
+        World.currentMarker = World.createMarker(pois.shift());
+        World.markerList = [World.currentMarker];
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
