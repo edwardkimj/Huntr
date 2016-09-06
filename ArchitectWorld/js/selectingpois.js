@@ -35,7 +35,7 @@ var World = {
         var pois = [];
         var that = this;
 
-		for (var currentPlaceNr = 1; currentPlaceNr < poiData.length ; currentPlaceNr++) {
+		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length ; currentPlaceNr++) {
 			var poi = {
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
@@ -53,6 +53,7 @@ var World = {
                      //            // If distance from a user and a marker is small, then call the "onClose" function
                      //                // return ...
                      //            // Otherwise check it again in 5s.
+                     
                      setTimeout(function() {
                                 var currentMarkerLon = World.currentMarker.poiData.longitude;
                                 var currentMarkerLat = World.currentMarker.poiData.latitude;
@@ -60,6 +61,9 @@ var World = {
                                 var distance = myGeoLocation.distanceToUser();
                                 console.log(myGeoLocation);
                                 console.log(distance);
+                                if(distance < 80) {
+                                console.log("hello world");
+                                }
                                 checkIfUserIsClose();
                                 }, 2000);
                      })();
