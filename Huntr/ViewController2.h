@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController2 : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *gameLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *gameButton;
 @end

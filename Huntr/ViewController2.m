@@ -29,7 +29,6 @@
     
     [ _gameButton setTitle: [NSString stringWithFormat:@"%@", [game objectForKey:@"name"]] forState: UIControlStateNormal];
     
-    [ _gameLabel setText: [NSString stringWithFormat:@"%@", [game objectForKey:@"name"]]];
 }
 
 - (void)didReceiveMemoryWarning {
