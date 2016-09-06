@@ -116,6 +116,15 @@ var World = {
             marker.poiData.onClose();
         });
         
+        function checkIfUserIsClose() {
+            // If distance from a user and a marker is small, then call the "onClose" function
+                // return ...
+            // Otherwise check it again in 5s.
+            setTimeout(function() {
+                checkIfUserIsClose();
+            }, 5000);
+        }();
+        
         var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
         
         $("#poi-detail-distance").html(distanceToUserValue);
