@@ -19,10 +19,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="huntr-background" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-mn-0pA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HUNTR " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mj-33-Ss9">
                                 <rect key="frame" x="100" y="188" width="175" height="57"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="47"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHf-yT-gLa">
@@ -44,7 +47,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Hunts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMG-ka-OZ2">
                                 <rect key="frame" x="126" y="323" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -70,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCB-OK-YdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-579" y="373.5"/>
+            <point key="canvasLocation" x="-579.5" y="373.5"/>
         </scene>
         <!--Initial Clue View Controller-->
         <scene sceneID="owM-q7-gsE">
@@ -84,20 +87,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your first clue!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pH-Qu-epZ">
-                                <rect key="frame" x="104" y="153" width="167" height="28"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="huntr-background" translatesAutoresizingMaskIntoConstraints="NO" id="9eL-fN-yIs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pH-Qu-epZ">
+                                <rect key="frame" x="188" y="150" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPA-7L-Djc">
-                                <rect key="frame" x="50" y="231" width="275" height="132"/>
+                                <rect key="frame" x="50" y="200" width="275" height="132"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-TH-w60">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfafdadfadf adfadfadfadfadfadfadsfasdfadfasdfadsfafd " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-TH-w60">
                                         <rect key="frame" x="15" y="15" width="245" height="102"/>
-                                        <string key="text">Start at DBC. The treasure you seek lies across the street... in an underwater bed that is actually just a building... Walk across the street, for real. </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -117,7 +122,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-kV-Dcq">
                                 <rect key="frame" x="51" y="451" width="273" height="66"/>
                                 <color key="backgroundColor" red="1" green="0.84705882349999995" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <state key="normal" title="Start Hunt!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -131,18 +136,29 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="sD4-kC-us3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inX-b8-wVZ">
+                                <rect key="frame" x="0.0" y="57" width="375" height="67"/>
+                                <color key="backgroundColor" red="1" green="0.84705882349999995" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.5607843137254902" green="0.77254901960784317" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jfb-kV-Dcq" firstAttribute="centerY" secondItem="CwG-ik-dBV" secondAttribute="centerY" multiplier="1.45" id="4YQ-os-6fb"/>
-                            <constraint firstItem="0pH-Qu-epZ" firstAttribute="centerY" secondItem="CwG-ik-dBV" secondAttribute="centerY" multiplier="0.5" id="AGX-lm-gRp"/>
+                            <constraint firstItem="0pH-Qu-epZ" firstAttribute="centerY" secondItem="CwG-ik-dBV" secondAttribute="centerY" multiplier="0.45" id="AGX-lm-gRp"/>
                             <constraint firstItem="0pH-Qu-epZ" firstAttribute="centerX" secondItem="CwG-ik-dBV" secondAttribute="centerX" id="F0c-Ql-kmL"/>
+                            <constraint firstItem="inX-b8-wVZ" firstAttribute="height" secondItem="CwG-ik-dBV" secondAttribute="height" multiplier="0.1" id="Hv0-Jz-aSh"/>
                             <constraint firstItem="jfb-kV-Dcq" firstAttribute="leading" secondItem="CwG-ik-dBV" secondAttribute="leadingMargin" constant="35" id="NHg-yv-Tpa"/>
+                            <constraint firstItem="inX-b8-wVZ" firstAttribute="centerY" secondItem="CwG-ik-dBV" secondAttribute="centerY" multiplier="0.27" id="Pdm-tA-Wn5"/>
                             <constraint firstItem="MPA-7L-Djc" firstAttribute="top" secondItem="0pH-Qu-epZ" secondAttribute="bottom" constant="50" id="S4c-ni-g3L"/>
                             <constraint firstItem="jfb-kV-Dcq" firstAttribute="height" secondItem="CwG-ik-dBV" secondAttribute="height" multiplier="0.1" id="YFS-m8-IBK"/>
+                            <constraint firstItem="inX-b8-wVZ" firstAttribute="centerX" secondItem="CwG-ik-dBV" secondAttribute="centerX" id="blB-mI-dS3"/>
                             <constraint firstAttribute="trailing" secondItem="MPA-7L-Djc" secondAttribute="trailing" constant="50" id="bmc-1n-CWR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jfb-kV-Dcq" secondAttribute="trailing" constant="35" id="cR6-3t-hol"/>
+                            <constraint firstItem="inX-b8-wVZ" firstAttribute="width" secondItem="CwG-ik-dBV" secondAttribute="width" id="jvC-fh-gkc"/>
                             <constraint firstItem="MPA-7L-Djc" firstAttribute="leading" secondItem="CwG-ik-dBV" secondAttribute="leading" constant="50" id="rO1-nB-yqE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -197,4 +213,7 @@
             <point key="canvasLocation" x="-1476" y="373.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="huntr-background" width="375" height="667"/>
+    </resources>
 </document>
