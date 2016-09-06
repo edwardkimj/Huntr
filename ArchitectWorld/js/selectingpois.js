@@ -18,9 +18,16 @@ var World = {
 	markerList: [],
 	currentMarker: null,
     
+    createMarker: function createMarkerFn(specificPoi) {
+        World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
+        World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
+        new Marker(specificPoi);
+    },
+    
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
-		World.markerList = [];
-
+//		World.markerList = [];
+        
+        console.log(poiData);
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
@@ -37,19 +44,30 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
+                    console.log(markers);
                     if (markers.length === 0) {
                         alert('Congratz!');
                     }
+                    
+                    World.createMarker(markers[0]);
                     var currentMarker = markers.shift();
-                    World.markerList = [currentMarker];
+                    
+//                    World.markerList = [currentMarker];
                     World.currentMarker = currentMarker;
+//                    World.markerList = [];
+                   
+                    
                 }
 			};
-            
-            markers.push(new Marker(singlePoi));
+            console.log(singlePoi);
+            markers.push(singlePoi);
+            console.log(markers)
+            World.createMarker(markers[0]);
+            console.log(markers)
 		}
         
         World.markerList = [markers.shift()];
+        console.log(markers);
 
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
@@ -137,8 +155,9 @@ var World = {
         var serverUrl = ServerInformation.POIDATA_SERVER + "?" + ServerInformation.POIDATA_SERVER_ARG_LAT + "=" + lat + "&" + ServerInformation.POIDATA_SERVER_ARG_LON + "=" + lon + "&" + ServerInformation.POIDATA_SERVER_ARG_NR_POIS + "=20";
     
         var jqxhr = $.getJSON(serverUrl, function(data) {
+            World.markerList = data;
             World.loadPoisFromJsonData(data);
-                              console.log(data);
+//            console.log(data);
             World.isRequestingData = false;
         })
     
