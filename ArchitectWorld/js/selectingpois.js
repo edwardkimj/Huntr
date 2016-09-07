@@ -17,6 +17,8 @@ var World = {
 
 	markerList: [],
 	currentMarker: null,
+    pois: [],
+    logs: [],
     
     createMarker: function createMarkerFn(specificPoi) {
         World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
@@ -24,18 +26,54 @@ var World = {
         return new Marker(specificPoi);
     },
     
-    loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
-//		World.markerList = [];
+    // recursive check for user proximity to marker
+    checkIfUserIsNearMarker: function() {
+        console.log('Inside checkIfUserIsNearMarker, World: ', World)
+        var markerLocation = new AR.GeoLocation(World.currentMarker.poiData.latitude, World.currentMarker.poiData.longitude);
+        console.log("Marker Location:");
+        console.log(markerLocation);
+        var distance = markerLocation.distanceToUser();
+        var msg = "this is the distance between the user and the marker: "  + distance;
+        World.logs.push(msg);
+        console.log(msg);
+        console.log(World.logs);
         
-        console.log(poiData);
+        if(distance < 50) {
+            return World.tryLoadNextMarker();
+        }
+    
+        setTimeout(function() {
+                   console.log('setTimeout called');
+            World.checkIfUserIsNearMarker();
+        }, 3000);
+    },
+    
+    // tries to create a new marker based on distance to user
+    tryLoadNextMarker: function() {
+        console.log('inside tryLoadNextMarker');
+        World.currentMarker.markerObject.destroy();
+        World.currentMarker = null;
+        World.markerList = [];
+
+        if (World.pois.length === 0) {
+            return alert('Congratz!');
+        }
+
+        World.currentMarker = World.createMarker(World.pois.shift());
+        World.markerList = [World.currentMarker];
+        World.checkIfUserIsNearMarker();
+    },
+
+    // loads POIs from JSON data and runs check to see if user is near
+    loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
-        var pois = [];
+        World.pois = [];
         var that = this;
 
-		for (var currentPlaceNr = 1; currentPlaceNr < poiData.length ; currentPlaceNr++) {
+		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length ; currentPlaceNr++) {
 			var poi = {
 				"id": poiData[currentPlaceNr].id,
 				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
@@ -44,19 +82,18 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
-                    if (pois.length === 0) {
-                        return alert('Congratz!');
-                    }
-                    World.currentMarker = World.createMarker(pois.shift());
-                    World.markerList = [World.currentMarker];
+//                    World.tryLoadNextMarker();
                 }
 			};
-            pois.push(poi);
+            World.pois.push(poi);
             
 		}
-        World.currentMarker = World.createMarker(pois.shift());
-        World.markerList = [World.currentMarker];
+        World.currentMarker = World.createMarker(World.pois.shift());
 
+        
+        World.markerList = [World.currentMarker];
+        World.checkIfUserIsNearMarker();
+         
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
 
@@ -75,55 +112,29 @@ var World = {
 	},
 
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
+        console.log('current lat ' + lat);
+        console.log('current lon ' + lon);
 
 
 		if (!World.initiallyLoadedData) {
 
 			World.requestDataFromServer(lat, lon);
 			World.initiallyLoadedData = true;
+            
 		}
 	},
-
-//	// fired when user pressed maker in cam
-//	onMarkerSelected: function onMarkerSelectedFn(marker) {
-//
-//		// deselect previous marker
-//		if (World.currentMarker) {
-//			if (World.currentMarker.poiData.id == marker.poiData.id) {
-//				return;
-//			}
-//			World.currentMarker.setDeselected(World.currentMarker);
-//		}
-//
-//		// highlight current one
-//		marker.setSelected(marker);
-//		World.currentMarker = marker;
-//        
-//	},
         
     onMarkerSelected: function onMarkerSelectedFn(marker) {
         World.currentMarker = marker;
-        console.log(marker);
 
         $("#poi-detail-title").html(marker.poiData.title);
         $("#poi-detail-description").html(marker.poiData.description);
         
         $("#poi-resolved").click(function() {
             $("#panel-poidetail").panel("close");
-            marker.markerObject.destroy();
-            World.currentMarker = null;
-            World.markerList = [];
             marker.poiData.onClose();
         });
-        
-        function checkIfUserIsClose() {
-            // If distance from a user and a marker is small, then call the "onClose" function
-                // return ...
-            // Otherwise check it again in 5s.
-            setTimeout(function() {
-                checkIfUserIsClose();
-            }, 5000);
-        }();
+
         
         var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
         
@@ -154,7 +165,6 @@ var World = {
         var jqxhr = $.getJSON(serverUrl, function(data) {
             World.markerList = data;
             World.loadPoisFromJsonData(data);
-//            console.log(data);
             World.isRequestingData = false;
         })
     
