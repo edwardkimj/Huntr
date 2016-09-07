@@ -29,12 +29,10 @@
     },
     {
       "idiom" : "ipad",
-      "filename" : "huntr-background-768x1024-264ppi.png",
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "filename" : "huntr-background-1536x2048-264ppi.png",
       "scale" : "2x"
     }
   ],
