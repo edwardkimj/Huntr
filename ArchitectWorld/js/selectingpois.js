@@ -18,6 +18,7 @@ var World = {
 	markerList: [],
 	currentMarker: null,
     pois: [],
+    logs: [],
     
     createMarker: function createMarkerFn(specificPoi) {
         World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
@@ -25,25 +26,31 @@ var World = {
         return new Marker(specificPoi);
     },
     
-    
+    // recursive check for user proximity to marker
     checkIfUserIsNearMarker: function() {
-        if (!World.currentMarker) {
-            return;
-        }
-        var myGeoLocation = new AR.GeoLocation(World.currentMarker.poiData.latitude, World.currentMarker.poiData.longitude);
-        var distance = myGeoLocation.distanceToUser();
-        console.log(distance);
-    
-        if(distance < 30) {
+        console.log('Inside checkIfUserIsNearMarker, World: ', World)
+        var markerLocation = new AR.GeoLocation(World.currentMarker.poiData.latitude, World.currentMarker.poiData.longitude);
+        console.log("Marker Location:");
+        console.log(markerLocation);
+        var distance = markerLocation.distanceToUser();
+        var msg = "this is the distance between the user and the marker: "  + distance;
+        World.logs.push(msg);
+        console.log(msg);
+        console.log(World.logs);
+        
+        if(distance < 50) {
             return World.tryLoadNextMarker();
         }
     
         setTimeout(function() {
+                   console.log('setTimeout called');
             World.checkIfUserIsNearMarker();
         }, 3000);
     },
     
+    // tries to create a new marker based on distance to user
     tryLoadNextMarker: function() {
+        console.log('inside tryLoadNextMarker');
         World.currentMarker.markerObject.destroy();
         World.currentMarker = null;
         World.markerList = [];
@@ -57,6 +64,7 @@ var World = {
         World.checkIfUserIsNearMarker();
     },
 
+    // loads POIs from JSON data and runs check to see if user is near
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
@@ -104,6 +112,8 @@ var World = {
 	},
 
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
+        console.log('current lat ' + lat);
+        console.log('current lon ' + lon);
 
 
 		if (!World.initiallyLoadedData) {
