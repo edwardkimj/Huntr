@@ -17,6 +17,7 @@ var World = {
 
 	markerList: [],
 	currentMarker: null,
+    pois: [],
     
     createMarker: function createMarkerFn(specificPoi) {
         World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
@@ -24,15 +25,44 @@ var World = {
         return new Marker(specificPoi);
     },
     
+    
+    checkIfUserIsNearMarker: function() {
+        if (!World.currentMarker) {
+            return;
+        }
+        var myGeoLocation = new AR.GeoLocation(World.currentMarker.poiData.latitude, World.currentMarker.poiData.longitude);
+        var distance = myGeoLocation.distanceToUser();
+        console.log(distance);
+    
+        if(distance < 30) {
+            return World.tryLoadNextMarker();
+        }
+    
+        setTimeout(function() {
+            World.checkIfUserIsNearMarker();
+        }, 3000);
+    },
+    
+    tryLoadNextMarker: function() {
+        World.currentMarker.markerObject.destroy();
+        World.currentMarker = null;
+        World.markerList = [];
+
+        if (World.pois.length === 0) {
+            return alert('Congratz!');
+        }
+
+        World.currentMarker = World.createMarker(World.pois.shift());
+        World.markerList = [World.currentMarker];
+        World.checkIfUserIsNearMarker();
+    },
+
     loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
-//		World.markerList = [];
-        
-//        console.log(poiData);
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
-        var pois = [];
+        World.pois = [];
         var that = this;
 
 		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length ; currentPlaceNr++) {
@@ -44,59 +74,18 @@ var World = {
 				"title": poiData[currentPlaceNr].name,
 				"description": poiData[currentPlaceNr].description,
                 onClose: function() {
-                    if (pois.length === 0) {
-                        return alert('Congratz!');
-                    }
-                    
-                    
-                    
-                    console.log("outside of checkIfUserIsClose function:");
-                    
-                    
-                    (function checkIfUserIsClose() {
-                     //            // If distance from a user and a marker is small, then load the
-                     //                // return ...
-                     //            // Otherwise check it again in 5s.
-                     // oNce it closes check distance IF distance is in range then create clue
-                     // this needs to happen right AFTER the close
-                     
-                     
-                        setTimeout(function() {
-                                   var nextMarker = World.createMarker(pois[0]);
-                                   
-                                   
-                                var nextMarkerLon = nextMarker.poiData.longitude;
-                                var nextMarkerLat = nextMarker.poiData.latitude;
-                                var myGeoLocation = new AR.GeoLocation(nextMarkerLat, nextMarkerLon);
-                                var distance = myGeoLocation.distanceToUser();
-                                console.log(distance);
-                                
-                                if(distance < 90) {
-                                    console.log("hello world");
-                                    World.currentMarker = World.createMarker(pois.shift());
-                                    World.markerList = [World.currentMarker];
-                                }
-                                
-                                checkIfUserIsClose();
-                                
-                                }, 2000);
-                     })();
-                    
-//                    World.currentMarker = World.createMarker(pois.shift());
-//                    World.markerList = [World.currentMarker];
+//                    World.tryLoadNextMarker();
                 }
 			};
-            pois.push(poi);
+            World.pois.push(poi);
             
 		}
-        World.currentMarker = World.createMarker(pois[0]);
-//        var myGeoLocation = new AR.GeoLocation(37.784985, -122.398508);
-//        var distance = myGeoLocation.distanceToUser();
-//        
-//        console.log(distance);
+        World.currentMarker = World.createMarker(World.pois.shift());
+
         
         World.markerList = [World.currentMarker];
-
+        World.checkIfUserIsNearMarker();
+         
 		World.updateStatusMessage(currentPlaceNr + ' places loaded');
 	},
 
@@ -124,49 +113,18 @@ var World = {
             
 		}
 	},
-
-//	// fired when user pressed maker in cam
-//	onMarkerSelected: function onMarkerSelectedFn(marker) {
-//
-//		// deselect previous marker
-//		if (World.currentMarker) {
-//			if (World.currentMarker.poiData.id == marker.poiData.id) {
-//				return;
-//			}
-//			World.currentMarker.setDeselected(World.currentMarker);
-//		}
-//
-//		// highlight current one
-//		marker.setSelected(marker);
-//		World.currentMarker = marker;
-//        
-//	},
         
     onMarkerSelected: function onMarkerSelectedFn(marker) {
         World.currentMarker = marker;
-//        console.log(marker);
 
         $("#poi-detail-title").html(marker.poiData.title);
         $("#poi-detail-description").html(marker.poiData.description);
         
         $("#poi-resolved").click(function() {
             $("#panel-poidetail").panel("close");
-            marker.markerObject.destroy();
-            World.currentMarker = null;
-            World.markerList = [];
             marker.poiData.onClose();
         });
-//        console.log("outside of checkIfUserIsClose function:");
-//        (function checkIfUserIsClose() {
-////            // If distance from a user and a marker is small, then call the "onClose" function
-////                // return ...
-////            // Otherwise check it again in 5s.
-//         console.log("Wasup");
-//            setTimeout(function() {
-//                       console.log("Hello");
-//                       checkIfUserIsClose();
-//            }, 2000);
-//        })();
+
         
         var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
         
