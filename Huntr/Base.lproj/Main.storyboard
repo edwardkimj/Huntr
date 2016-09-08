@@ -32,7 +32,7 @@
                                 <rect key="frame" x="51" y="451" width="273" height="66"/>
                                 <color key="backgroundColor" red="1" green="0.84705882352941175" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="This is a really long ass button name">
+                                <state key="normal" title="Game Quest">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -44,19 +44,11 @@
                                     <segue destination="q6u-37-Hai" kind="show" id="HSn-9x-sdH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Hunts:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMG-ka-OZ2">
-                                <rect key="frame" x="126" y="323" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.56078431370000004" green="0.79607843140000001" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OMG-ka-OZ2" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" id="4SX-WI-hJ3"/>
                             <constraint firstItem="7Mj-33-Ss9" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" multiplier="0.65" id="VIn-hL-T1f"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="leading" secondItem="fwp-Tx-uRT" secondAttribute="leadingMargin" constant="35" id="d1E-p3-WVJ"/>
-                            <constraint firstItem="OMG-ka-OZ2" firstAttribute="centerX" secondItem="fwp-Tx-uRT" secondAttribute="centerX" id="dYr-Uw-95m"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="height" secondItem="fwp-Tx-uRT" secondAttribute="height" multiplier="0.1" id="g8z-Ke-xmA"/>
                             <constraint firstItem="7Mj-33-Ss9" firstAttribute="centerX" secondItem="fwp-Tx-uRT" secondAttribute="centerX" id="hef-DR-9zB"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" multiplier="1.45" id="r55-8q-x3u"/>
