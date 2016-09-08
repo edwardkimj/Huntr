@@ -6,27 +6,24 @@ Send friends and family on an augmented reality treasure hunt through their iPho
 
 ## Team
 ------
-[Millie Chan](https://github.com/milliechan)
-[Amanda Cook](https://github.com/amandawouldgo)
-[Ed Kim](https://github.com/edwardkimj)
-[Sarah Suchá](https://github.com/sarahsucha)
+* [Millie Chan](https://github.com/milliechan)
+* [Amanda Cook](https://github.com/amandawouldgo)
+* [Ed Kim](https://github.com/edwardkimj)
+* [Sarah Suchá](https://github.com/sarahsucha)
 
 ## Goals
 ------
 * Implement augmented reality
 * Set up points of interest in order
-*
-* 
-
-## Deployment
-------
 
 ## Tech Stack
 ------
 * CSS 3
 * HTML 5
 * JQuery
+* Heroku
 * Objective C
+* Postgresql
 * Ruby on Rails
 * Wikitude iOS Javascript SDK
 
