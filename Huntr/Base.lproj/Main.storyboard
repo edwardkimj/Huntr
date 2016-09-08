@@ -184,7 +184,16 @@ Best of luck, and don’t forget to follow your nose!  </string>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="fox-ET-AVw">
+                                <rect key="frame" x="139" y="503" width="128" height="128"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fox-ET-AVw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.08" id="H3z-do-VFl"/>
+                            <constraint firstItem="fox-ET-AVw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.7" id="tEm-JS-H1O"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -213,5 +222,6 @@ Best of luck, and don’t forget to follow your nose!  </string>
     <resources>
         <image name="huntr-background" width="375" height="667"/>
         <image name="huntr-logo" width="679" height="132"/>
+        <image name="map" width="128" height="128"/>
     </resources>
 </document>
