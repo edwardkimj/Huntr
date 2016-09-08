@@ -12,7 +12,7 @@ $(document).ready(function() {
       $('#map-list').empty();
       for( var i = 0; i < maps.length; i++ ) {
         console.log("I'm in the for loop for getting maps");
-        $('#map-list').append(`<li><a  href="/#maps/${maps[i].id}">${maps[i].name}</a></li>`);
+        $('#map-list').append(`<li><a  href="${maps[i].id}">${maps[i].name}</a></li>`);
         listenForClick();
       }
     }
@@ -65,6 +65,16 @@ $(document).ready(function() {
 function listenForClick() {
   $('#map-list').on('click', 'a', function(event) {
     event.preventDefault();
+    var mapLink = this;
+    var mapNumber = $(mapLink).attr('href');
+    var link = "https://protected-anchorage-46542.herokuapp.com/users/2/games/" + mapNumber + "/steps"
+
+    console.log(link)
+
+    // var mapDetailsRequest = $.ajax({
+    //   url: ''
+    // })
+
     // grab href with the maps id
     // clear out the html page and inject details of maps
     console.log("clicked on map-quest link")
