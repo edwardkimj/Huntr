@@ -97,10 +97,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPA-7L-Djc">
-                                <rect key="frame" x="50" y="200" width="275" height="132"/>
+                                <rect key="frame" x="50" y="200" width="275" height="233"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfafdadfadf adfadfadfadfadfadfadsfasdfadfasdfadsfafd " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-TH-w60">
-                                        <rect key="frame" x="15" y="15" width="245" height="102"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-TH-w60">
+                                        <rect key="frame" x="15" y="15" width="245" height="203"/>
+                                        <string key="text">You’re ready to begin your quest! 
+1. Point your phone around until you see your first clue. 
+2. Tap the clue for details. 
+3. Once you reach the destination of each clue, the next clue will pop up.
+Best of luck, and don’t forget to follow your nose!  </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
