@@ -22,12 +22,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="huntr-background" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-mn-0pA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HUNTR " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mj-33-Ss9">
-                                <rect key="frame" x="100" y="188" width="175" height="57"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="47"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHf-yT-gLa">
                                 <rect key="frame" x="51" y="451" width="273" height="66"/>
                                 <color key="backgroundColor" red="1" green="0.84705882352941175" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,14 +38,20 @@
                                     <segue destination="q6u-37-Hai" kind="show" id="HSn-9x-sdH"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huntr-logo" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-d2-uWJ">
+                                <rect key="frame" x="26" y="184" width="323" height="66"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.56078431370000004" green="0.79607843140000001" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="7Mj-33-Ss9" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" multiplier="0.65" id="VIn-hL-T1f"/>
+                            <constraint firstItem="cnB-d2-uWJ" firstAttribute="centerX" secondItem="fwp-Tx-uRT" secondAttribute="centerX" id="C7i-gg-t2i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cnB-d2-uWJ" secondAttribute="trailing" constant="10" id="OQg-I3-tfk"/>
+                            <constraint firstItem="cnB-d2-uWJ" firstAttribute="height" secondItem="fwp-Tx-uRT" secondAttribute="height" multiplier="0.1" id="aVx-13-mTr"/>
+                            <constraint firstItem="cnB-d2-uWJ" firstAttribute="leading" secondItem="fwp-Tx-uRT" secondAttribute="leadingMargin" constant="10" id="ccC-u3-1ip"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="leading" secondItem="fwp-Tx-uRT" secondAttribute="leadingMargin" constant="35" id="d1E-p3-WVJ"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="height" secondItem="fwp-Tx-uRT" secondAttribute="height" multiplier="0.1" id="g8z-Ke-xmA"/>
-                            <constraint firstItem="7Mj-33-Ss9" firstAttribute="centerX" secondItem="fwp-Tx-uRT" secondAttribute="centerX" id="hef-DR-9zB"/>
                             <constraint firstItem="MHf-yT-gLa" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" multiplier="1.45" id="r55-8q-x3u"/>
+                            <constraint firstItem="cnB-d2-uWJ" firstAttribute="centerY" secondItem="fwp-Tx-uRT" secondAttribute="centerY" multiplier="0.65" id="rsi-TO-QqE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MHf-yT-gLa" secondAttribute="trailing" constant="35" id="t0D-mI-gWL"/>
                         </constraints>
                     </view>
@@ -212,5 +212,6 @@ Best of luck, and don’t forget to follow your nose!  </string>
     </scenes>
     <resources>
         <image name="huntr-background" width="375" height="667"/>
+        <image name="huntr-logo" width="679" height="132"/>
     </resources>
 </document>
