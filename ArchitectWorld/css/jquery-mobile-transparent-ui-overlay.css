@@ -1,5 +1,16 @@
-.ui-panel {
-	margin-top: 20px !important;
+#panel-poidetail {
+    width: 60%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+h3 {
+    font-size: 3em;
+}
+
+li {
+    list-style: none;
+    font-size: 2em;
 }
 
 .ui-body-c, .ui-overlay-c {
