@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>huntr</title>
+    <script src="architect://architect.js"></script>
+    <!-- jquery mobile CSS -->
+    <link rel="stylesheet" href="jquery/jquery.mobile-1.3.2.min.css" />
+    <!-- required to set background transparent & enable "click through" -->
+    <link rel="stylesheet" href="jquery/jquery-mobile-transparent-ui-overlay.css" />
+    <link rel="stylesheet" href="css/jquery-mobile-transparent-ui-overlay.css" />
+    <!-- jquery JS files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.3.2.min.js"></script>
+    <!-- Javascript Routing -->
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+  <body>
+    <!-- page1 -->
+    <!-- <div data-role="page" id="page1" style="background: none;"> -->
+      <div data-role="panel" id="panel-poidetail" data-display="overlay" style="background-color:#FCFCFC;" width="70%" data-theme="c">
+        <div data-role="content">
+          <div class="logo">
+            <img src="assets/huntr-logo-green.png" width="90%">
+          </div>
+          <span class="hidden" id="current-map"></span>
+          <!-- <div id="panel-poidetail" class="maps" data-position="right" data-display="overlay" style="background-color:#FCFCFC;" width="90%" data-theme="c"> -->
+            <div class="hunts">
+              <h3>Hunts</h3>
+              <ul id="map-list"></ul>
+            </div>
+            <div class="hunt-detail">
+              <h3 id="poi-detail-title"></h3>
+              <h4 id="poi-detail-description"></h4>
+              <h4>Distance: <span id="poi-detail-distance">Loading..</span> meters</h4>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    <!-- </div> -->
+  </body>
+</html>

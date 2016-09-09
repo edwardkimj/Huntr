@@ -12,7 +12,7 @@
     <title>My ARchitect World</title>
 
     <script src="architect://architect.js"></script>
-    <script src="../ade.js"></script>
+<!--    <script src="../ade.js"></script>-->
 
     <!-- jquery mobile CSS -->
     <link rel="stylesheet" href="jquery/jquery.mobile-1.3.2.min.css" />
@@ -24,8 +24,11 @@
     <script type="text/javascript" src="jquery/jquery.mobile-1.3.2.min.js"></script>
 
 
+    <!-- marker representation-->
+    <script src="js/marker.js"></script>    
+
     <!-- World logic-->
-    <script type="text/javascript" src="js/poiatlocation.js"></script>
+    <script type="text/javascript" src="js/selectingpois.js"></script>
 </head>
     
     <body >
@@ -45,8 +48,34 @@
                 </div>
                 
             </div>
-
-        </div>
+            
+            <div data-role="panel" id="panel-poidetail" data-position="right" data-display="overlay" style="background-color:#F0F0F0;" data-theme="c">
+                
+                <!-- header with "close" button -->
+                <div data-role="header" data-theme="c">
+                    <h1>Details</h1>
+                    <a href="#header" data-rel="close">Close</a>
+                </div>
+                
+                <!-- content of POI detail page, you may also add thumbnails etc. here if you like -->
+                <div data-role="content">
+                    
+                    <!-- title -->
+                    <h3 id="poi-detail-title"></h3>
+                    
+                    <!-- description -->
+                    <h4 id="poi-detail-description"></h4>
+                    
+                    <button id="poi-resolved">Resolve</button>
+                    
+                    
+                    <!-- distance -->
+                    <h4>Distance: <a id="poi-detail-distance"></a></h4>
+                </div>
+            </div>
+      </div>
+     
+     <div
 
     </body>
     
