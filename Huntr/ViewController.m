@@ -52,13 +52,13 @@
         self.architectView.debugDelegate = self;
         
         /* Use the -setLicenseKey method to unlock all Wikitude SDK features that you bought with your license. */
-        [self.architectView setLicenseKey:@"FOCM/CM6FRmJfcYrnxOiCZbmMUULtn8n7xENkjahAUGEIObUoEjkoG3g+XEZTz8kMCAOGksYcHYhsPL/BW5aRyO+EZ0Z4wy8iyGyb+YtcoxIX2Mi3XJ+SNziugsJ1I/2rqLnl0z3tYtMXWWdRtEx4fDWZsUYvjDsu2jvfFNJevBTYWx0ZWRfX9IkQb25b6ifmFam2FsBWtb0PJt3gdbKltVb5TZqRoOom8KR/tKvZYKqd1zZ/WJmYwJmJ93Yse95mptEuKNFsskn2DT8muARsnYX5FtE+EKnDBGlSL5osujpXdXSSNTZ2EE6+fOQNuYmUodPDnusDaDBc6wLypQmrgRZcULE2Gw8e5jSlDCg4RgwUtMR362HUL2VBuzA4AbK/j063Y6QdL4cfSEoj0QmzpmVZn9x3k6WdxwSdWfAMK1I65MFiIybDM7/ao3v8SqTa/5J9MUcHbyYvPX7NDM+xMLxv4BfDTni/qGJGEDECwwtc2g3K70rIQd7Uq71xh59olSZCcMnCDmjiBeBh4Pep/rIiaufAqYndi64/xE+7vntYSMSPNZK9fLbOIY/uY1yYsd6TDg2KxJqcFb/sQOX1bUHeiaJt+ByJx+jSVznNdLcIBjmvGo7yZPPPjdcl28R3MHlC2kmLB0K/XFrBxDsvvOj67u92eIllsddIGRU6BA="];
+        [self.architectView setLicenseKey:@"19uCNbFoiM6I7NYWyNLWRu41m+dItGGXA1HJMeo3nNbKwsfdaANr48tMc9NUzKoAXSZbveF/2YLDOewNDrd8ojptnblJVvt3UPqJmvAaR4+dP0WBxvh+dJJ/b31mDpdYtfpPqsU+ChCzc9DaMeNgRd6eRqQ88ViTTB8JwWJUY1ZTYWx0ZWRfX9jxjWsr4SnahN9P6cU8QWbwBHpmWftq3Xq0MDLDVRuaH2OeeRmE4PEKSmT6WLrXgY97jmamuBNi4l73ZFri8kWLZd96JC2Fd9Y+t4y/RE1j3Iz3TJRiQQgRuVkaoIjnoq/oyYfjclkS9nelP+IegCfO2EHKkY8HCVjeg5UZGElgcFAUY6TBsFRgH7nkBj3lmHJ8XolDR7moO269+MlCL6ChVsSts35FUXO+/rhBBwQvyRn23fdFEKOc+mp9UrwipwAMM//N4osFNsm4m52NR1ge8k4e0RY6GVsayFk+OAQhyIK+qpZZ/jXTfthYFfT/vEV2TnpNM3SiIouItkcpDDlrSwDZCHzGNfrZve7uXnVUZ9Luq5De018Z7KWhq0SkhogcoJbVfhARWfnwdPtKmqxW7oiFs0+GCfzj9gbGRf7QIwA8AhLg3Nbu6iYHEhawi2EqJ43f0Hb5u4tT+8XGpkFIkppXGsziTzM67wLogJD0Qyvw42zPcHc="];
         
         /* The Architect World can be loaded independently from the WTArchitectView rendering.
          
          NOTE: The architectWorldNavigation property is assigned at this point. The navigation object is valid until another Architect World is loaded.
          */
-        self.architectWorldNavigation = [self.architectView loadArchitectWorldFromURL:[[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory:@"ArchitectWorld"] withRequiredFeatures:WTFeature_Geo];
+        self.architectWorldNavigation = [self.architectView loadArchitectWorldFromURL:[[NSBundle mainBundle] URLForResource:@"main" withExtension:@"html" subdirectory:@"ArchitectWorld"] withRequiredFeatures:WTFeature_Geo];
         
         /* Because the WTArchitectView does some OpenGL rendering, frame updates have to be suspended and resumend when the application changes it's active state.
          Here, UIApplication notifications are used to respond to the active state changes.
@@ -87,6 +87,7 @@
         
         /* Standard subview handling using Autolayout */
         [self.view addSubview:self.architectView];
+        [self.view sendSubviewToBack:self.architectView]; //placing view on top of architect. view has a stacked view, it is 2 views on top of each other. this allows you to layer buttons on top of AR view
         self.architectView.translatesAutoresizingMaskIntoConstraints = NO;
         
         NSDictionary *views = NSDictionaryOfVariableBindings(_architectView);
